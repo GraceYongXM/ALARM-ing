@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:alarming/pages/choose_alarm_page.dart';
 import 'package:flutter/material.dart';
 import 'package:alarm/alarm.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AlarmPage extends StatefulWidget {
   const AlarmPage({super.key, required this.name, required this.default_alarm});
@@ -18,6 +19,7 @@ class _AlarmPageState extends State<AlarmPage> {
   final timePickerController = TextEditingController();
   TimeOfDay wakeUpTime = TimeOfDay.now();
   bool isRinging = false;
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
   Future displayTimePicker(BuildContext context) async {
     var time = await showTimePicker(context: context, initialTime: wakeUpTime);
@@ -28,6 +30,11 @@ class _AlarmPageState extends State<AlarmPage> {
         wakeUpTime = time;
       });
     }
+    
+    db.collection("users").doc(widget.name).update({"alarm_time": time}).then(
+        (value) => print("Alarm successfully set!"),
+        onError: (e) => print("Error setting alarm"));
+    //createTimer(wakeUpTime);
 
     final now = DateTime.now();
     DateTime dt = DateTime(
