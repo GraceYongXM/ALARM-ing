@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '990022161886',
     projectId: 'alarm-ing',
     storageBucket: 'alarm-ing.appspot.com',
-    iosClientId: '990022161886-6avbv93n15o96pj3hjhsahuk79a8oc6j.apps.googleusercontent.com',
+    iosClientId:
+        '990022161886-6avbv93n15o96pj3hjhsahuk79a8oc6j.apps.googleusercontent.com',
     iosBundleId: 'com.example.alarming',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '990022161886',
     projectId: 'alarm-ing',
     storageBucket: 'alarm-ing.appspot.com',
-    iosClientId: '990022161886-6avbv93n15o96pj3hjhsahuk79a8oc6j.apps.googleusercontent.com',
+    iosClientId:
+        '990022161886-6avbv93n15o96pj3hjhsahuk79a8oc6j.apps.googleusercontent.com',
     iosBundleId: 'com.example.alarming',
   );
 }
