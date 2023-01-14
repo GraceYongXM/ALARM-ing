@@ -100,8 +100,8 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Choose alarm for $nextAlarmUser"),
+          children: 
+          [Text("Choose alarm for $nextAlarmUser"),
             DropdownButton(
               // Initial Value
               value: dropdownvalue,
