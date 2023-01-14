@@ -102,6 +102,7 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
     }).catchError((onError) {
       print("Error setting alarm for $nextAlarmUser");
     });
+    Alarm.stop();
   }
 
   @override
