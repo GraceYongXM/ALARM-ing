@@ -37,12 +37,16 @@ class SignupPageState extends State<SignupPage> {
 
   Future<void> _signUp() async {
     final user = <String, dynamic>{
-      "username": _usernameController.text,
-      "password": _passwordController.text
+      "name": _usernameController.text,
+      "password": _passwordController.text,
+      "alarm_time": null,
+      "default_alarm": "assets/firemix.mp3",
+      "side": ""
     };
     db
         .collection("users")
-        .add(user)
+        .doc(_usernameController.text)
+        .set(user)
         .then((value) => print("User data Added"))
         .catchError((error) => print(error));
 
