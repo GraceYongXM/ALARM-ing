@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "990022161886",
+    "project_id": "alarm-ing",
+    "storage_bucket": "alarm-ing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990022161886:android:4b2064b7a2132562c1394f",
+        "android_client_info": {
+          "package_name": "com.example.alarming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990022161886-f6qvopmf57ms8il2nvrkdqdmu9po7jmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWunyeQjf0UqDZqzPU7GYE3Emc9Q7xFuc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990022161886-f6qvopmf57ms8il2nvrkdqdmu9po7jmo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "990022161886-095kv3645rercs4gs0qvrg8otfeue7he.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "hacknroll.alarming-ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
