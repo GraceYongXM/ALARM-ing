@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:alarming/pages/choose_alarm_page.dart';
 import 'package:flutter/material.dart';
 import 'package:alarm/alarm.dart';
 
@@ -68,7 +69,36 @@ class _AlarmPageState extends State<AlarmPage> {
     );
   }
 
-  stopAlarm() {}
+  stopAlarm() {
+    // set up the button
+    Widget stopButton = TextButton(
+      child: Text("Stop"),
+      onPressed: () { 
+        Alarm.stop();
+        setState(() {
+          isRinging = false;
+        });
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChooseAlarmPage()));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Alarm notification"),
+      content: Text("Your alarm is ringing"),
+      actions: [
+        stopButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
