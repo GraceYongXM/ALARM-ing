@@ -35,8 +35,8 @@ class _AlarmPageState extends State<AlarmPage> {
       now.year,
       now.month,
       now.day,
-      wakeUpTime!.hour,
-      wakeUpTime!.minute,
+      wakeUpTime.hour,
+      wakeUpTime.minute,
     );
 
     setAlarm(dt);
@@ -73,12 +73,13 @@ class _AlarmPageState extends State<AlarmPage> {
     // set up the button
     Widget stopButton = TextButton(
       child: Text("Stop"),
-      onPressed: () { 
+      onPressed: () {
         Alarm.stop();
         setState(() {
           isRinging = false;
         });
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChooseAlarmPage()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => ChooseAlarmPage()));
       },
     );
 
