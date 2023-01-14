@@ -39,7 +39,7 @@ class SignupPageState extends State<SignupPage> {
     final user = <String, dynamic>{
       "name": _usernameController.text,
       "password": _passwordController.text,
-      "alarm_time": null,
+      "alarm_time": '',
       "default_alarm": "assets/firemix.mp3",
       "side": ""
     };

@@ -30,13 +30,23 @@ class _AlarmPageState extends State<AlarmPage> {
         wakeUpTime = time;
       });
     }
-    
-    db.collection("users").doc(widget.name).update({"alarm_time": time}).then(
-        (value) => print("Alarm successfully set!"),
-        onError: (e) => print("Error setting alarm"));
-    //createTimer(wakeUpTime);
 
     final now = DateTime.now();
+
+    db.collection("users").doc(widget.name).update({
+      "alarm_time":
+          DateTime(now.year, now.month, now.day, time!.hour, time.minute)
+    }).then((value) {
+      print("Alarm successfully set!");
+    }).catchError((onError) {
+      print("Error setting alarm");
+    });
+
+    // db.collection("users").doc(widget.name).update({"alarm_time": time}).then(
+    //     (value) => print("Alarm successfully set!"),
+    //     onError: (e) => print("Error setting alarm"));
+    //createTimer(wakeUpTime);
+
     DateTime dt = DateTime(
       now.year,
       now.month,
