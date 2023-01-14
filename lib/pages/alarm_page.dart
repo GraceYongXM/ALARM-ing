@@ -1,11 +1,8 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:alarming/pages/choose_alarm_page.dart';
 import 'package:flutter/material.dart';
 import 'package:alarm/alarm.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class AlarmPage extends StatefulWidget {
   const AlarmPage({super.key, required this.name, required this.default_alarm});
@@ -56,21 +53,10 @@ class _AlarmPageState extends State<AlarmPage> {
   // // create alarm
   // void alarm() {}
 
-  // obtain current user data
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  String myId = '';
-
-  String getUserAlarm() {
-    User? user = FirebaseAuth.instance.currentUser;
-    DocumentSnapshot snap = FirebaseFirestore.instance.collection('Users').doc(user!.uid).get() as DocumentSnapshot<Object?>;
-    String userAlarm = snap['default_alarm'];
-    return userAlarm;
-  }
-
   Future<void> setAlarm(DateTime dateTime) async {
     await Alarm.set(
       alarmDateTime: dateTime,
-      assetAudio: getUserAlarm(),
+      assetAudio: widget.default_alarm,
       loopAudio: true,
       onRing: () {
         setState(() {
