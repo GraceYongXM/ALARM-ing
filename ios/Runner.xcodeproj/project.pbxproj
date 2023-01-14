@@ -99,12 +99,9 @@
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
-<<<<<<< HEAD
 				D3EE07501845D174958F84E3 /* GoogleService-Info.plist */,
-=======
 				1F9747FF5316AE15753191B7 /* Pods */,
 				09B5FCCA9A92C8EB7776CEB6 /* Frameworks */,
->>>>>>> 86f68dc9ec4e783f5e8d5f626e7c42f5d8bd6c48
 			);
 			sourceTree = "<group>";
 		};
@@ -162,7 +159,7 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
