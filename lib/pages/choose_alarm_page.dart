@@ -33,18 +33,17 @@ class ChooseAlarmPage extends StatefulWidget {
 
 class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
   FirebaseFirestore db = FirebaseFirestore.instance;
-  String nextAlarmUser = "NO ONE";
+  String nextAlarmUser = "";
   List<Map<String, dynamic>> userAndTime = [];
   bool isRinging = false;
 
   @override
   initState() {
     super.initState();
-    asyncMethod();
-  }
-
-  void asyncMethod() async {
-    await getNextAlarmUser();
+    getNextAlarmUser().then((result) {
+      print("result: $result");
+      setState(() {nextAlarmUser = result;});
+    });
   }
 
   Future<void> sortUsersByAlarm() async {
@@ -65,7 +64,7 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
 
   Future<String> getNextAlarmUser() async {
     await sortUsersByAlarm();
-    String nextUser = "";
+    String nextUser = "NO ONE";
     for (int i = 0; i < userAndTime.length - 1; i++) {
       if (widget.name == userAndTime[i]["username"]) {
         nextUser = userAndTime[i + 1]["username"];
