@@ -1,4 +1,4 @@
-import 'package:alarming/pages/alarm_page.dart';
+import 'package:alarming/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AlarmPage(),
+      home: const LoginPage(),
     );
   }
 }
