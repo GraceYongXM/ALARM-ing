@@ -38,6 +38,8 @@ dependencies:
   firebase_database: ^10.0.9
   assets_audio_player: ^3.0.6
   alarm: ^0.0.5
+  cloud_firestore: ^4.3.1
+  firebase_auth: ^4.2.5
 
 dev_dependencies:
   flutter_test:
