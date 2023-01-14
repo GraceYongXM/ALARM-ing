@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:alarm/alarm.dart';
 
 class AlarmPage extends StatefulWidget {
   const AlarmPage({super.key});
@@ -14,6 +15,7 @@ class _AlarmPageState extends State<AlarmPage> {
   // record wake up time
   final timePickerController = TextEditingController();
   TimeOfDay wakeUpTime = TimeOfDay.now();
+  bool isRinging = false;
 
   Future displayTimePicker(BuildContext context) async {
     var time = await showTimePicker(context: context, initialTime: wakeUpTime);
@@ -26,6 +28,17 @@ class _AlarmPageState extends State<AlarmPage> {
     }
 
     createTimer(wakeUpTime);
+
+    final now = DateTime.now();
+    DateTime dt = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      wakeUpTime!.hour,
+      wakeUpTime!.minute,
+    );
+
+    setAlarm(dt);
   }
 
   // create timer
@@ -43,6 +56,22 @@ class _AlarmPageState extends State<AlarmPage> {
 
   // create alarm
   void alarm() {}
+
+  Future<void> setAlarm(DateTime dateTime) async {
+    await Alarm.set(
+      alarmDateTime: dateTime,
+      assetAudio: 'assets/fireremix.mp3',
+      loopAudio: true,
+      onRing: () {
+        setState(() {
+          isRinging = true;
+          //wakeUpTime = null;
+        });
+      },
+      notifTitle: 'Alarm notification',
+      notifBody: 'Your alarm is ringing',
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
