@@ -59,13 +59,16 @@ class _AlarmPageState extends State<AlarmPage> {
       onRing: () {
         setState(() {
           isRinging = true;
-          //wakeUpTime = null;
         });
+
+        stopAlarm();
       },
       notifTitle: 'Alarm notification',
       notifBody: 'Your alarm is ringing',
     );
   }
+
+  stopAlarm() {}
 
   @override
   Widget build(BuildContext context) {
