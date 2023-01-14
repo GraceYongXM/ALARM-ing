@@ -40,7 +40,7 @@ class SignupPageState extends State<SignupPage> {
       "name": _usernameController.text,
       "password": _passwordController.text,
       "alarm_time": '',
-      "default_alarm": "assets/firemix.mp3",
+      "default_alarm": "assets/fireremix.mp3",
       "side": ""
     };
     db

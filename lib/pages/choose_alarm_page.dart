@@ -42,7 +42,9 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
     super.initState();
     getNextAlarmUser().then((result) {
       print("result: $result");
-      setState(() {nextAlarmUser = result;});
+      setState(() {
+        nextAlarmUser = result;
+      });
     });
   }
 
@@ -91,6 +93,17 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
     );
   }
 
+  void submit(String alarm) {
+    db
+        .collection("users")
+        .doc(nextAlarmUser)
+        .update({"default_alarm": alarm}).then((value) {
+      print("Alarm successfully set for $nextAlarmUser!");
+    }).catchError((onError) {
+      print("Error setting alarm for $nextAlarmUser");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,8 +113,8 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: 
-          [Text("Choose alarm for $nextAlarmUser"),
+          children: [
+            Text("Choose alarm for $nextAlarmUser"),
             DropdownButton(
               // Initial Value
               value: dropdownvalue,
@@ -125,6 +138,9 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
                 });
               },
             ),
+            ElevatedButton(
+                onPressed: () => (submit(dropdownvalue.location)),
+                child: const Text("Confirm")),
           ],
         ),
       ),
