@@ -65,15 +65,15 @@ class _AlarmPageState extends State<AlarmPage> {
         setState(() {
           isRinging = false;
         });
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => ChooseAlarmPage()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ChooseAlarmPage(name: widget.name)));
       },
     );
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Alarm notification"),
-      content: Text("Your alarm is ringing"),
+      title: const Text("Alarm notification"),
+      content: const Text("Your alarm is ringing"),
       actions: [
         stopButton,
       ],

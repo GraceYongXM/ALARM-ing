@@ -22,15 +22,43 @@ String jsonStr = '''
 List<OurAlarm> alarms = alarmFromJson(jsonStr);
 
 class ChooseAlarmPage extends StatefulWidget {
-  const ChooseAlarmPage({super.key});
+  const ChooseAlarmPage({super.key, required this.name});
+  final String name;
 
   @override
   State<ChooseAlarmPage> createState() => _ChooseAlarmPageState();
 }
 
 class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
-  var friend;
-  bool isRinging = false;
+  FirebaseFirestore db = FirebaseFirestore.instance;
+  String nextAlarmUser = "NO ONE";
+  List<Map<String, dynamic>> userAndTime = [];
+
+  Future<void> sortUsersByAlarm() async {
+    return db
+        .collection("users")
+        .orderBy("alarm_time")
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        Map<String, dynamic> row = {
+          'username': doc['name'],
+          'alarmTime': doc['alarm_time'],
+        };
+        userAndTime.add(row);
+      });
+    });
+  }
+
+  void getNextAlarmUser() {
+    sortUsersByAlarm();
+    for (int i = 0; i < userAndTime.length - 1; i++) {
+      if (widget.name == userAndTime[i]["username"]) {
+        nextAlarmUser = userAndTime[i + 1]["username"];
+        break;
+      }
+    }
+  }
 
   OurAlarm dropdownvalue = alarms[0];
 
@@ -59,7 +87,7 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Choose alarm for $friend"),
+            Text("Choose alarm for $nextAlarmUser"),
             DropdownButton(
               // Initial Value
               value: dropdownvalue,
