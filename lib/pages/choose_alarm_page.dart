@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:alarming/models/ouralarms.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alarm/alarm.dart';
 
@@ -33,6 +35,17 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
   FirebaseFirestore db = FirebaseFirestore.instance;
   String nextAlarmUser = "NO ONE";
   List<Map<String, dynamic>> userAndTime = [];
+  bool isRinging = false;
+
+  @override
+  initState() {
+    super.initState();
+    asyncMethod();
+  }
+
+  void asyncMethod() async {
+    await getNextAlarmUser();
+  }
 
   Future<void> sortUsersByAlarm() async {
     return db
@@ -50,14 +63,16 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
     });
   }
 
-  void getNextAlarmUser() {
-    sortUsersByAlarm();
+  Future<String> getNextAlarmUser() async {
+    await sortUsersByAlarm();
+    String nextUser = "";
     for (int i = 0; i < userAndTime.length - 1; i++) {
       if (widget.name == userAndTime[i]["username"]) {
-        nextAlarmUser = userAndTime[i + 1]["username"];
+        nextUser = userAndTime[i + 1]["username"];
         break;
       }
     }
+    return nextUser;
   }
 
   OurAlarm dropdownvalue = alarms[0];
