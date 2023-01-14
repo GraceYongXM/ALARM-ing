@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:alarming/pages/choose_alarm_page.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +30,7 @@ class _AlarmPageState extends State<AlarmPage> {
         wakeUpTime = time;
       });
     }
+    
     db.collection("users").doc(widget.name).update({"alarm_time": time}).then(
         (value) => print("Alarm successfully set!"),
         onError: (e) => print("Error setting alarm"));
@@ -48,26 +48,10 @@ class _AlarmPageState extends State<AlarmPage> {
     setAlarm(dt);
   }
 
-  /*final user = db.collection("users").doc(name);
-  user.update({"alarm_time" : time}).then(
-    (value) => print("Alarm successfully set!"),
-    onError: (e) => print("Error setting alarm")
-  );*/
-
-  // void createTimer(TimeOfDay wakeUpTime) {
-  //   int hours = wakeUpTime.hour + 24 - TimeOfDay.now().hour;
-  //   int mins = wakeUpTime.minute + 60 - TimeOfDay.now().minute;
-  //   final duration = Duration(hours: hours, minutes: mins);
-  //   Timer(duration, alarm);
-  // }
-
-  // // create alarm
-  // void alarm() {}
-
   Future<void> setAlarm(DateTime dateTime) async {
     await Alarm.set(
       alarmDateTime: dateTime,
-      assetAudio: 'assets/fireremix.mp3',
+      assetAudio: widget.default_alarm,
       loopAudio: true,
       onRing: () {
         setState(() {
@@ -76,8 +60,6 @@ class _AlarmPageState extends State<AlarmPage> {
 
         stopAlarm();
       },
-      notifTitle: 'Alarm notification',
-      notifBody: 'Your alarm is ringing',
     );
   }
 
