@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:alarm/alarm.dart';
 
 class AlarmPage extends StatefulWidget {
-  const AlarmPage({super.key});
+  const AlarmPage({super.key, required this.name, required this.default_alarm});
+  final String name;
+  final String default_alarm;
 
   @override
   State<AlarmPage> createState() => _AlarmPageState();

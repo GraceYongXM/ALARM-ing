@@ -19,6 +19,7 @@ class LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
   String username = '';
   String password = '';
+  String default_alarm = '';
 
   Future<void> _getNamePassword() async {
     return db
@@ -29,6 +30,7 @@ class LoginPageState extends State<LoginPage> {
       querySnapshot.docs.forEach((doc) {
         username = doc["name"];
         password = doc["password"];
+        default_alarm = doc["default_alarm"];
       });
     });
   }
@@ -72,7 +74,8 @@ class LoginPageState extends State<LoginPage> {
       await Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => const AlarmPage(),
+          builder: (_) =>
+              AlarmPage(name: username, default_alarm: default_alarm),
         ),
       );
     }
