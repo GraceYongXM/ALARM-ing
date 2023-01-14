@@ -29,8 +29,6 @@ class _AlarmPageState extends State<AlarmPage> {
       });
     }
 
-    //createTimer(wakeUpTime);
-
     final now = DateTime.now();
     DateTime dt = DateTime(
       now.year,
@@ -42,16 +40,6 @@ class _AlarmPageState extends State<AlarmPage> {
 
     setAlarm(dt);
   }
-
-  // void createTimer(TimeOfDay wakeUpTime) {
-  //   int hours = wakeUpTime.hour + 24 - TimeOfDay.now().hour;
-  //   int mins = wakeUpTime.minute + 60 - TimeOfDay.now().minute;
-  //   final duration = Duration(hours: hours, minutes: mins);
-  //   Timer(duration, alarm);
-  // }
-
-  // // create alarm
-  // void alarm() {}
 
   Future<void> setAlarm(DateTime dateTime) async {
     await Alarm.set(
