@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:alarming/pages/choose_alarm_page.dart';
 import 'package:flutter/material.dart';
+import 'package:alarm/alarm.dart';
 
 class AlarmPage extends StatefulWidget {
   const AlarmPage({super.key});
@@ -14,6 +16,7 @@ class _AlarmPageState extends State<AlarmPage> {
   // record wake up time
   final timePickerController = TextEditingController();
   TimeOfDay wakeUpTime = TimeOfDay.now();
+  bool isRinging = false;
 
   Future displayTimePicker(BuildContext context) async {
     var time = await showTimePicker(context: context, initialTime: wakeUpTime);
@@ -25,17 +28,77 @@ class _AlarmPageState extends State<AlarmPage> {
       });
     }
 
-    createTimer(wakeUpTime);
+    //createTimer(wakeUpTime);
+
+    final now = DateTime.now();
+    DateTime dt = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      wakeUpTime.hour,
+      wakeUpTime.minute,
+    );
+
+    setAlarm(dt);
   }
 
-  // create timer
+  // void createTimer(TimeOfDay wakeUpTime) {
+  //   int hours = wakeUpTime.hour + 24 - TimeOfDay.now().hour;
+  //   int mins = wakeUpTime.minute + 60 - TimeOfDay.now().minute;
+  //   final duration = Duration(hours: hours, minutes: mins);
+  //   Timer(duration, alarm);
+  // }
 
-  //final duration = Duration(hours: hours, );
-  //final timer = Timer(duration, alarm);
-  //const Duration
+  // // create alarm
+  // void alarm() {}
 
-  void createTimer(TimeOfDay wakeUpTime) {
-    int hours = wakeUpTime.hour + 24 - TimeOfDay.now().hour;
+  Future<void> setAlarm(DateTime dateTime) async {
+    await Alarm.set(
+      alarmDateTime: dateTime,
+      assetAudio: 'assets/fireremix.mp3',
+      loopAudio: true,
+      onRing: () {
+        setState(() {
+          isRinging = true;
+        });
+
+        stopAlarm();
+      },
+      notifTitle: 'Alarm notification',
+      notifBody: 'Your alarm is ringing',
+    );
+  }
+
+  stopAlarm() {
+    // set up the button
+    Widget stopButton = TextButton(
+      child: Text("Stop"),
+      onPressed: () {
+        Alarm.stop();
+        setState(() {
+          isRinging = false;
+        });
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => ChooseAlarmPage()));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Alarm notification"),
+      content: Text("Your alarm is ringing"),
+      actions: [
+        stopButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   @override

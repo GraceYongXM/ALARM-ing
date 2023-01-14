@@ -39,6 +39,7 @@ dependencies:
   assets_audio_player: ^3.0.6
   cloud_firestore: ^4.3.1
   firebase_auth: ^4.2.5
+  alarm: ^0.0.5
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,8 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/audios/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

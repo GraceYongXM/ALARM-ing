@@ -1,4 +1,12 @@
 PODS:
+  - alarm (0.0.1):
+    - Flutter
+  - assets_audio_player (0.0.1):
+    - Flutter
+  - assets_audio_player_web (0.0.1):
+    - Flutter
+  - audio_session (0.0.1):
+    - Flutter
   - Firebase/CoreOnly (10.3.0):
     - FirebaseCore (= 10.3.0)
   - Firebase/Database (10.3.0):
@@ -21,18 +29,34 @@ PODS:
     - FirebaseCore (~> 10.0)
     - leveldb-library (~> 1.22)
   - Flutter (1.0.0)
+  - flutter_fgbg (0.0.1):
+    - Flutter
+  - flutter_local_notifications (0.0.1):
+    - Flutter
   - GoogleUtilities/Environment (7.11.0):
     - PromisesObjC (< 3.0, >= 1.2)
   - GoogleUtilities/Logger (7.11.0):
     - GoogleUtilities/Environment
   - "GoogleUtilities/NSData+zlib (7.11.0)"
+  - just_audio (0.0.1):
+    - Flutter
   - leveldb-library (1.22.1)
+  - path_provider_ios (0.0.1):
+    - Flutter
   - PromisesObjC (2.1.1)
 
 DEPENDENCIES:
+  - alarm (from `.symlinks/plugins/alarm/ios`)
+  - assets_audio_player (from `.symlinks/plugins/assets_audio_player/ios`)
+  - assets_audio_player_web (from `.symlinks/plugins/assets_audio_player_web/ios`)
+  - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
   - Flutter (from `Flutter`)
+  - flutter_fgbg (from `.symlinks/plugins/flutter_fgbg/ios`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - just_audio (from `.symlinks/plugins/just_audio/ios`)
+  - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
 
 SPEC REPOS:
   trunk:
@@ -45,14 +69,34 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  alarm:
+    :path: ".symlinks/plugins/alarm/ios"
+  assets_audio_player:
+    :path: ".symlinks/plugins/assets_audio_player/ios"
+  assets_audio_player_web:
+    :path: ".symlinks/plugins/assets_audio_player_web/ios"
+  audio_session:
+    :path: ".symlinks/plugins/audio_session/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_database:
     :path: ".symlinks/plugins/firebase_database/ios"
   Flutter:
     :path: Flutter
+  flutter_fgbg:
+    :path: ".symlinks/plugins/flutter_fgbg/ios"
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  just_audio:
+    :path: ".symlinks/plugins/just_audio/ios"
+  path_provider_ios:
+    :path: ".symlinks/plugins/path_provider_ios/ios"
 
 SPEC CHECKSUMS:
+  alarm: 6c1f6a9688f94cd6bf8f104c67cc26e78c9d8d13
+  assets_audio_player: edee322b9cb625571b830b35872ead1a295fd917
+  assets_audio_player_web: 19826380c44375761aa0b9053665c1e3fbc3b86b
+  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
   Firebase: f92fc551ead69c94168d36c2b26188263860acd9
   firebase_core: bf59c32d2e53814f558efa20840c1902fa2fe461
   firebase_database: 64eb24851aa709a26fb33fccd1b422658e307c76
@@ -60,8 +104,12 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 29b76f784d607df8b2a1259d73c3f04f1210137b
   FirebaseDatabase: d0732ba8aece0eccfa0cfb3ef540e7ba6fa1c6a6
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_fgbg: 31c0d1140a131daea2d342121808f6aa0dcd879d
+  flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
+  just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
