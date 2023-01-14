@@ -29,14 +29,15 @@ class _AlarmPageState extends State<AlarmPage> {
   }
 
   // create timer
-  
-  final duration = Duration(hours: hours, );
-  final timer = Timer(duration, alarm);
-  const Duration
-
   void createTimer(TimeOfDay wakeUpTime) {
     int hours = wakeUpTime.hour + 24 - TimeOfDay.now().hour;
+    int mins = wakeUpTime.minute + 60 - TimeOfDay.now().minute;
+    final duration = Duration(hours: hours, minutes: mins);
+    Timer(duration, alarm);
   }
+
+  // create alarm
+  void alarm() {}
 
   @override
   Widget build(BuildContext context) {
