@@ -1,28 +1,25 @@
 import 'dart:convert';
 
-import 'package:alarming/models/alarm.dart';
+import 'package:alarming/models/ouralarms.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
 import 'package:alarm/alarm.dart';
 
 // List of items in our dropdown menu
-List<Alarm> alarmFromJson(String str) =>
-    List<Alarm>.from(json.decode(str).map((x) => Alarm.fromJson(x)));
+List<OurAlarm> alarmFromJson(String str) =>
+    List<OurAlarm>.from(json.decode(str).map((x) => OurAlarm.fromJson(x)));
 String jsonStr = '''
   [
-    {"name":"Baby Devil Laugh", "location":"assets/Baby Devil Laugh.mp"},
+    {"name":"Annoying Ring", "location":"assets/Very_Annoying_Ring-281832.mp3"},
+    {"name":"Baby Devil Laugh", "location":"assets/Baby Devil Laugh.mp3"},
     {"name":"Baby Laugh", "location":"assets/Baby laugh.mp3"},
     {"name":"Fire Remix", "location":"assets/fireremix.mp3"},
     {"name":"Irritating Fly", "location":"assets/Irritating Fly.mp3"},
     {"name":"Irritating Laugh", "location":"assets/Irritating Laugh.mp3"},
     {"name":"Irritating Tone", "location":"assets/Irritating Tone.mp3"},
-    {"name":"Mosquito", "location":"assets/Mosquito_-_Annoying-36877.mp3"},
-    {"name":"Annoying Ring", "location":"assets/Very_Annoying_Ring-281832.mp3"}
-    ]
+    {"name":"Mosquito", "location":"assets/Mosquito.mp3"}
+  ]
   ''';
-List<Alarm> alarms = alarmFromJson(jsonStr);
->>>>>>> 64c941af848497f29c9cc082be41ed29a2d7d3cd
+List<OurAlarm> alarms = alarmFromJson(jsonStr);
 
 class ChooseAlarmPage extends StatefulWidget {
   const ChooseAlarmPage({super.key});
@@ -33,12 +30,13 @@ class ChooseAlarmPage extends StatefulWidget {
 
 class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
   var friend;
+  bool isRinging = false;
 
-  Alarm dropdownvalue = alarms[0];
+  OurAlarm dropdownvalue = alarms[0];
 
-  Future<void> setAlarm(Alarm alarm) async {
+  Future<void> setAlarm(OurAlarm alarm) async {
     await Alarm.set(
-      alarmDateTime: 0,
+      alarmDateTime: DateTime.now(),
       assetAudio: alarm.location,
       //loopAudio: true,
       onRing: () {
@@ -70,7 +68,7 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
               icon: const Icon(Icons.keyboard_arrow_down),
 
               // Array list of items
-              items: alarms.map((Alarm alarm) {
+              items: alarms.map((OurAlarm alarm) {
                 return DropdownMenuItem(
                   value: alarm,
                   child: Text(alarm.name),
@@ -78,7 +76,7 @@ class _ChooseAlarmPageState extends State<ChooseAlarmPage> {
               }).toList(),
               // After selecting the desired option,it will
               // change button value to selected value
-              onChanged: (Alarm? newValue) {
+              onChanged: (OurAlarm? newValue) {
                 setState(() {
                   dropdownvalue = newValue!;
                   setAlarm(newValue);
