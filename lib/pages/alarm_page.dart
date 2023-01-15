@@ -30,12 +30,7 @@ class _AlarmPageState extends State<AlarmPage> {
   @override
   initState() {
     super.initState();
-    setAlarm(widget.alarmTime).then((result) {
-      // print("result: $result");
-      // setState(() {
-      //   nextAlarmUser = result;
-      // });
-    });
+    setAlarm(widget.alarmTime).then((result) {});
   }
 
   Future displayTimePicker(BuildContext context) async {
