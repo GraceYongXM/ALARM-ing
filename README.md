@@ -1,5 +1,5 @@
 # ALARM-ing
-Team #131's project for Hack & Roll 2023! 
+Team #131's project for Hack&Roll 2023! 
 
 An alarmingly annoying application aimed at angering anyone against arising (e)arly. Beat your friends in becoming the earliest riser and give them a good scare in the morning!
 
