@@ -1,16 +1,13 @@
-# alarming
+# ALARMing
+An NUS project for Hack&Roll 2023! 
 
-A new Flutter project.
+An alarmingly annoying application aimed at angering anyone against arising (e)arly. Beat your friends in becoming the earliest riser and give them a good scare in the morning!
 
-## Getting Started
+# How to Setup
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Using an Emulator
+1. Download and install Flutter & chosen emulator
+2. Clone or download this repository.
+3. In the terminal, use flutter pub get to get the necessary dependencies
+4. Set up an emulator and ensure it is running
+5. Open this repository folder in a text editor, and run the main.dart file. The application should appear on the emulator.
