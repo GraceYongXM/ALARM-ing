@@ -9,7 +9,7 @@ Set an alarm for the next day. If you wake up earlier than your friends, you can
 
 # How to Setup
 
-_This application is currently supported on iOS only.
+_This application is currently supported on iOS only._
 
 Using an Emulator
 1. Download and install Flutter and a chosen iOS emulator.
