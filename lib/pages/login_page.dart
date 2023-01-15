@@ -32,7 +32,7 @@ class LoginPageState extends State<LoginPage> {
         username = doc["name"];
         password = doc["password"];
         default_alarm = doc["default_alarm"];
-        alarmTime = doc["alarm_time"];
+        alarmTime = doc["alarm_time"].toDate();
       });
     });
   }
