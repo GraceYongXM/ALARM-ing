@@ -1,9 +1,9 @@
-# ALARMing
-An NUS project for Hack&Roll 2023! 
+# ALARM-ing
+Team #131's project for Hack & Roll 2023! 
 
 An alarmingly annoying application aimed at angering anyone against arising (e)arly. Beat your friends in becoming the earliest riser and give them a good scare in the morning!
 
-# What it does
+# What It Does
 
 Set an alarm for the next day. If you wake up earlier than your friends, you can choose their alarm ringtone (i.e., change it into a more annoying one :P) and give them a really good wake-up call. 🤡
 
