@@ -7,9 +7,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'login_page.dart';
 
 class AlarmPage extends StatefulWidget {
-  const AlarmPage({super.key, required this.name, required this.default_alarm});
+  const AlarmPage(
+      {super.key,
+      required this.name,
+      required this.default_alarm,
+      required this.alarmTime});
   final String name;
   final String default_alarm;
+  final DateTime alarmTime;
 
   @override
   State<AlarmPage> createState() => _AlarmPageState();
@@ -21,6 +26,17 @@ class _AlarmPageState extends State<AlarmPage> {
   TimeOfDay wakeUpTime = TimeOfDay.now();
   bool isRinging = false;
   FirebaseFirestore db = FirebaseFirestore.instance;
+
+  @override
+  initState() {
+    super.initState();
+    setAlarm(widget.alarmTime).then((result) {
+      // print("result: $result");
+      // setState(() {
+      //   nextAlarmUser = result;
+      // });
+    });
+  }
 
   Future displayTimePicker(BuildContext context) async {
     var time = await showTimePicker(context: context, initialTime: wakeUpTime);

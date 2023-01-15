@@ -20,6 +20,7 @@ class LoginPageState extends State<LoginPage> {
   String username = '';
   String password = '';
   String default_alarm = '';
+  DateTime alarmTime = DateTime.now();
 
   Future<void> _getNamePassword() async {
     return db
@@ -31,6 +32,7 @@ class LoginPageState extends State<LoginPage> {
         username = doc["name"];
         password = doc["password"];
         default_alarm = doc["default_alarm"];
+        alarmTime = doc["alarm_time"];
       });
     });
   }
@@ -74,8 +76,11 @@ class LoginPageState extends State<LoginPage> {
       await Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) =>
-              AlarmPage(name: username, default_alarm: default_alarm),
+          builder: (_) => AlarmPage(
+            name: username,
+            default_alarm: default_alarm,
+            alarmTime: alarmTime,
+          ),
         ),
       );
     }
