@@ -26,8 +26,21 @@ class _AlarmPageState extends State<AlarmPage> {
     var time = await showTimePicker(context: context, initialTime: wakeUpTime);
 
     if (time != null) {
+      String minuteText = "", hourText = "";
       setState(() {
-        timePickerController.text = "${time.hour}:${time.minute}";
+        if (time.minute < 10) {
+          minuteText = "0${time.minute}";
+        } else {
+          minuteText = time.minute.toString();
+        }
+
+        if (time.hour < 10) {
+          hourText = "0${time.hour}";
+        } else {
+          hourText = time.hour.toString();
+        }
+
+        timePickerController.text = "$hourText:$minuteText";
         wakeUpTime = time;
       });
     }
