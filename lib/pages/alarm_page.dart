@@ -4,6 +4,7 @@ import 'package:alarming/pages/choose_alarm_page.dart';
 import 'package:flutter/material.dart';
 import 'package:alarm/alarm.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'login_page.dart';
 
 class AlarmPage extends StatefulWidget {
   const AlarmPage({super.key, required this.name, required this.default_alarm});
@@ -76,7 +77,7 @@ class _AlarmPageState extends State<AlarmPage> {
   stopAlarm() {
     // set up the button
     Widget stopButton = TextButton(
-      child: Text("Stop"),
+      child: const Text("Stop"),
       onPressed: () {
         Alarm.stop();
         setState(() {
@@ -110,6 +111,21 @@ class _AlarmPageState extends State<AlarmPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Alarm Page"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Successfully logged out.')));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginPage(),
+                ),
+              );
+            },
+          )
+        ],
       ),
       body: Center(
         child: Column(
