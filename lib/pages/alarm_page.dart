@@ -30,7 +30,9 @@ class _AlarmPageState extends State<AlarmPage> {
   @override
   initState() {
     super.initState();
-    setAlarm(widget.alarmTime).then((result) {});
+    if (widget.alarmTime.compareTo(DateTime.now()) >= 0) {
+      setAlarm(widget.alarmTime).then((result) {});
+    }
   }
 
   Future displayTimePicker(BuildContext context) async {
